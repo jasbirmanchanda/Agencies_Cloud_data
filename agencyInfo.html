@@ -65,7 +65,23 @@
   <input type="submit" value="Find">
 </form> 
 
-<p>If you click the "Find" button, the form-data of whole collection will be Displayed consisting that parameter. </p>
+<p>If you click the "Find" button, the form-data of whole collection will be Displayed consisting that parameter. </p><br><br>
+
+<form method="POST" action="http://localhost:9099/api/updateName">
+  <h2>updateName From</h2>
+  Agency Name:<br>
+  <input type="text" name="name1" >
+  <br><p>Where employee name </p>
+  Employee Name:<br>
+  <input type="text" name="name" >
+  <br><p>having employee id </p>
+  Employee ID:<br>
+  <input type="text" name="id" >
+  <br>
+  <input type="submit" value="Update Name">
+</form> 
+
+<p>If you click the "updateName" button, the form-data will be updated consisting that parameter. </p><br><br>
 
 </body>
 </html>
