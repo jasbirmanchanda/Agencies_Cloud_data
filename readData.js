@@ -33,32 +33,6 @@ var Nationality = req.body.nationality;
 
 });
 
-//Deleting a perticular column with id
-app.post('/api/delete', (req,res)=> {
-	var MongoClient = mongo.MongoClient;
-	var url = "mongodb+srv://jas:12345@cluster0-5zpp0.mongodb.net/test?retryWrites=true&w=majority";
-
-var id = req.body.id;
-
-	MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
-	  if (err) throw err;
-	var dbo = db.db("Best_Employment_Agencies");
-
-	var col = {Employee_id : id};
-
-	dbo.collection("StaffPlus").deleteOne(col,function(err, respond){
-		if (err)
-			throw err;
-		
-		res.send("Document Deleted");
-		console.log('Connection Established');
-		db.close();
-	})
-	});
-
-});
-
-
 
 
 const port = process.env.PORT || 9099;

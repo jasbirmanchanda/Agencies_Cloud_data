@@ -21,31 +21,6 @@ var Nationality = req.body.nationality;
 
 	var col = {Employee_id : id, e_name : name, e_gender : gender, e_payRate : payRate, e_address : address, e_contactNo : contactNo, e_nationality : Nationality};
 
-	dbo.collection("Friends_staffing").insertOne(col,function(err, respond){
-		if (err)
-			throw err;
-		
-		res.send("Document Inserted");
-		console.log('Connection Established');
-		db.close();
-	})
-	});
-
-});
-
-//Deleting a perticular column with id
-app.post('/api/delete', (req,res)=> {
-	var MongoClient = mongo.MongoClient;
-	var url = "mongodb+srv://jas:12345@cluster0-5zpp0.mongodb.net/test?retryWrites=true&w=majority";
-
-var id = req.body.id;
-
-	MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
-	  if (err) throw err;
-	var dbo = db.db("Best_Employment_Agencies");
-
-	var col = {Employee_id : id};
-
 	dbo.collection("StaffPlus").deleteOne(col,function(err, respond){
 		if (err)
 			throw err;
@@ -57,7 +32,6 @@ var id = req.body.id;
 	});
 
 });
-
 
 
 
