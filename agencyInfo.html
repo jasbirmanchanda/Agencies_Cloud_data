@@ -32,13 +32,40 @@
 <p>If you click the "Submit" button, the form-data will be sent to a page called " queries.js file ".</p><br><br>
 
 <form method="POST" action="http://localhost:9099/api/delete">
+  <h2>Delete From</h2>
+  Agency Name:<br>
+  <input type="text" name="name" >
+  <br><p>Where</p>
   Employee ID:<br>
   <input type="text" name="id" >
   <br>
   <input type="submit" value="Delete">
 </form> 
 
-<p>If you click the "Delete" button, the form-data will be Deleted consisting that parameter. </p>
+<p>If you click the "Delete" button, the form-data will be Deleted consisting that parameter. </p><br><br>
+
+<form method="POST" action="http://localhost:9099/api/find">
+  <h2>Find From</h2>
+  Agency Name:<br>
+  <input type="text" name="name" >
+  <br><p>Where</p>
+  Employee ID:<br>
+  <input type="text" name="id" >
+  <br>
+  <input type="submit" value="Find">
+</form> 
+
+<p>If you click the "Find" button, the form-data will be Displayed consisting that parameter. </p><br><br>
+
+<form method="POST" action="http://localhost:9099/api/findWhole">
+  <h2>Find From</h2>
+  Agency Name:<br>
+  <input type="text" name="name" >
+  <br><p>
+  <input type="submit" value="Find">
+</form> 
+
+<p>If you click the "Find" button, the form-data of whole collection will be Displayed consisting that parameter. </p>
 
 </body>
 </html>

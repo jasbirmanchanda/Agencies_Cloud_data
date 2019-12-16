@@ -39,6 +39,7 @@ app.post('/api/delete', (req,res)=> {
 	var url = "mongodb+srv://jas:12345@cluster0-5zpp0.mongodb.net/test?retryWrites=true&w=majority";
 
 var id = req.body.id;
+var agencyName = req.body.name;
 
 	MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
 	  if (err) throw err;
@@ -46,7 +47,7 @@ var id = req.body.id;
 
 	var col = {Employee_id : id};
 
-	dbo.collection("StaffPlus").deleteOne(col,function(err, respond){
+	dbo.collection(agencyName).deleteOne(col,function(err, respond){
 		if (err)
 			throw err;
 		
@@ -58,6 +59,54 @@ var id = req.body.id;
 
 });
 
+//Finding a perticular column with id
+app.post('/api/find', (req,res)=> {
+	var MongoClient = mongo.MongoClient;
+	var url = "mongodb+srv://jas:12345@cluster0-5zpp0.mongodb.net/test?retryWrites=true&w=majority";
+
+var id = req.body.id;
+var agencyName = req.body.name;
+
+	MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
+	  if (err) throw err;
+	var dbo = db.db("Best_Employment_Agencies");
+
+	var col = {Employee_id : id};
+
+	dbo.collection(agencyName).find(col).toArray(function(err,result){
+		if (err)
+			throw err;
+		
+		res.send(result);
+		console.log(result);
+		db.close();
+	})
+	});
+
+});
+
+//Finding whole collection
+app.post('/api/findWhole', (req,res)=> {
+	var MongoClient = mongo.MongoClient;
+	var url = "mongodb+srv://jas:12345@cluster0-5zpp0.mongodb.net/test?retryWrites=true&w=majority";
+
+var agencyName = req.body.name;
+
+	MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
+	  if (err) throw err;
+	var dbo = db.db("Best_Employment_Agencies");
+
+	dbo.collection(agencyName).find({}, { projection: { _id: 0 } }).toArray(function(err, result) {
+		if (err)
+			throw err;
+		
+		res.send(result);
+		console.log(result);
+		db.close();
+	})
+	});
+
+});
 
 
 
