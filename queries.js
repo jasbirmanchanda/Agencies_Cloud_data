@@ -21,7 +21,7 @@ var Nationality = req.body.nationality;
 
 	var col = {Employee_id : id, e_name : name, e_gender : gender, e_payRate : payRate, e_address : address, e_contactNo : contactNo, e_nationality : Nationality};
 
-	dbo.collection("Great_staffing").insertOne(col,function(err, respond){
+	dbo.collection("Friends_staffing").insertOne(col,function(err, respond){
 		if (err)
 			throw err;
 		
