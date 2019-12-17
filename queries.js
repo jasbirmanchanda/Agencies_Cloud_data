@@ -138,6 +138,34 @@ var name = req.body.name;
 
 });
 
+//Update a perticulater data with perticular column
+app.post('/api/updateSalary', (req,res)=> {
+	var MongoClient = mongo.MongoClient;
+	var url = "mongodb+srv://jas:12345@cluster0-5zpp0.mongodb.net/test?retryWrites=true&w=majority";
+
+var id = req.body.id;
+var agencyName = req.body.name1;
+var salary = req.body.salary;
+
+
+	MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
+	  if (err) throw err;
+	var dbo = db.db("Best_Employment_Agencies");
+	
+	var val = {Employee_id : id};
+	var newVal = { $set: {e_payRate: salary, Employee_id: id}}
+
+	dbo.collection(agencyName).updateOne(val, newVal,function(err,result){
+		if (err)
+			throw err;
+		
+		res.send(result);
+		console.log("1 document updated");
+		db.close();
+	})
+	});
+
+});
 
 
 
